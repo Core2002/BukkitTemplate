@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '2.0.4'
+}
+
+group 'fun.fifu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+
+    //国内镜像源
+    maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    maven { url 'https://mirrors.huaweicloud.com/repository/maven' }
+    //Minecraft
+    maven { url 'https://crystal.lss233.com.aslf.top/repositories/minecraft' }
+    maven { url 'https://lss233.com/artifactory/minecraft' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.bukkit:bukkit:1.18.1-R0.1-SNAPSHOT'
+    implementation 'com.alkaidmc.alkaid:alkaid-bukkit:1.0.0-SNAPSHOT'
+    
+    // implementation 'org.mongodb:mongo-java-driver:3.12.11'
+    // testImplementation 'org.mongodb:mongo-java-driver:3.12.11'
+    // implementation 'com.google.code.gson:gson:2.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+shadowJar {
+    manifest {
+        attributes(
+                'Main-Class': 'fun.fifu.bukkittemplate.Main',
+                "Multi-Release": true
+        )
+    }
+}
+
+//编译groovy代码时采用 UTF-8
+tasks.withType(GroovyCompile) {
+    groovyOptions.encoding = "UTF-8"
+}
+
+//编译JAVA文件时采用UTF-8
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

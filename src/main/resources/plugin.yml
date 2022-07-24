@@ -1,0 +1,5 @@
+main: fun.fifu.bukkittemplate.BukkitTemplate
+version: 1.0
+name: BukkitTemplate
+author: NekokeCore
+api-version: 1.16
