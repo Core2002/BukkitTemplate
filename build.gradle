@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '2.0.4'
-    // id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+//     id 'org.jetbrains.kotlin.jvm' version '1.8.22'
 }
 
 group 'fun.fifu'
@@ -9,6 +9,8 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenLocal()
+    mavenCentral()
+    google()
 
     // 国内镜像源
     maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
@@ -21,9 +23,6 @@ repositories {
 
     maven { url "https://repository.alkaidmc.com/releases" }
     maven { url "https://repository.alkaidmc.com/snapshots" }
-
-    mavenCentral()
-    google()
 }
 
 dependencies {
@@ -34,16 +33,16 @@ dependencies {
     implementation 'com.alkaidmc.alkaid:alkaid-bukkit:1.0.0-SNAPSHOT'
     // implementation 'cn.hutool:hutool-all:5.8.0.M3'
 
-    // implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.7.10'
-    // implementation 'org.jetbrains.kotlin:kotlin-reflect:1.7.10'
-    // implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+//     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+//     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.8.22'
+//     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 
-    // implementation 'org.mongodb:mongo-java-driver:3.12.11'
-    // testImplementation 'org.mongodb:mongo-java-driver:3.12.11'
-    // implementation 'com.google.code.gson:gson:2.9.0'
+//     implementation 'org.mongodb:mongo-java-driver:3.12.14'
+//     testImplementation 'org.mongodb:mongo-java-driver:3.12.14'
+//     implementation 'com.google.code.gson:gson:2.10.1'
 }
 
 test {
