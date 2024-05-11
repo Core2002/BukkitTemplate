@@ -43,6 +43,6 @@ os.rename(f"{base}/bukkittemplate/BukkitTemplate.java",
           f"{base}/bukkittemplate/{projectName_NoSpaces}.java")
 os.rename(f"{base}/bukkittemplate", f"{base}/{packageName}")
 
-print("完毕\n使用 'gradlew shadowJar' 来编译项目")
+print("完毕\n使用 'gradlew build' 来编译项目")
 
 os.remove(os.path.realpath(__file__))

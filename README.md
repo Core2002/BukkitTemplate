@@ -15,7 +15,7 @@ git clone https://github.com/Core2002/BukkitTemplate && cd BukkitTemplate
 python init.py
 Type Your Project Name
 
-gradlew shadowJar
+gradlew build
 ```
 
 > 细节披露：  

@@ -1,48 +1,47 @@
 plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
-//     id 'org.jetbrains.kotlin.jvm' version '1.8.22'
+//    id 'org.jetbrains.kotlin.jvm' version '1.9.23'
 }
 
 group 'fun.fifu'
 version '1.0-SNAPSHOT'
+
+def kotlin_version = "1.9.23"
+def bukkit_api_version = "1.20.2"
+def junit_version = "5.9.0"
 
 repositories {
     mavenLocal()
     mavenCentral()
     google()
 
-    // 国内镜像源
     maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
     maven { url 'https://mirrors.huaweicloud.com/repository/maven' }
 
-    // Minecraft
-    maven { url 'https://crystal.lss233.com.aslf.top/repositories/minecraft' }
-    maven { url 'https://lss233.com/artifactory/minecraft' }
-    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url 'https://papermc.io/repo/repository/maven-public/' }
 
     maven { url "https://repository.alkaidmc.com/releases" }
     maven { url "https://repository.alkaidmc.com/snapshots" }
 }
 
 dependencies {
-    compileOnly 'org.bukkit:bukkit:1.18.1-R0.1-SNAPSHOT'
+    compileOnly "io.papermc.paper:paper-api:${bukkit_api_version}-R0.1-SNAPSHOT"
+//    compileOnly fileTree(dir: 'libs', includes: ['*.jar'])
 
-    // compileOnly fileTree(dir: 'libs', includes: ['*.jar'])
+    implementation 'com.alkaidmc.alkaid:alkaid-bukkit:8dbf9e4-SNAPSHOT'
+//    implementation 'cn.hutool:hutool-all:5.8.27'
 
-    implementation 'com.alkaidmc.alkaid:alkaid-bukkit:1.0.0-SNAPSHOT'
-    // implementation 'cn.hutool:hutool-all:5.8.0.M3'
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2"
 
-//     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
-//     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.8.22'
-//     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
+//    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
+//    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit_version"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
-
-//     implementation 'org.mongodb:mongo-java-driver:3.12.14'
-//     testImplementation 'org.mongodb:mongo-java-driver:3.12.14'
-//     implementation 'com.google.code.gson:gson:2.10.1'
+//    implementation 'org.mongodb:mongo-java-driver:3.12.14'
+//    testImplementation 'org.mongodb:mongo-java-driver:3.12.14'
+//    implementation 'com.google.code.gson:gson:2.10.1'
 }
 
 test {
@@ -56,6 +55,10 @@ shadowJar {
                 "Multi-Release": true
         )
     }
+}
+
+tasks.build {
+    dependsOn(shadowJar)
 }
 
 //编译groovy代码时采用 UTF-8
